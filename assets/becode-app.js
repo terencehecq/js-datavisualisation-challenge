@@ -374,3 +374,105 @@ dropdown2.selectAll('option')
 d3.select('#mw-content-text').insert('label',"#selectYear")
                                 .text("Choisissez une année : ")
                                 .style("margin-top","20px");
+
+
+
+
+
+
+
+// ----- Graph 3 ----- //
+
+let margin3 = {top: 20, right: 20, bottom: 90, left: 50};
+let width = 900 - margin3.left - margin3.right;
+let height = 650 - margin3.top - margin3.bottom;
+
+// Create SVG
+let svg3 = d3.select('#content').insert('svg','#bodyContent')
+                                        .attr('width', 900)
+                                        .attr('height', 600)
+                                        .style('background', '#eee')
+                                        .attr('id','svg3');
+
+// Create graph zone in SVG                             
+const graph3 = svg3.append('g')
+                    .attr('width', width)
+                    .attr('height', height)
+                    .attr('transform', "translate(" + margin3.left + ", " + margin3.top + ")");
+
+                                
+// Crate groups for the both axis and placing them
+const groupeX3 = graph3.append('g')
+                        .attr('transform', `translate(0, ${height})`);
+
+const groupeY3 = graph3.append('g')
+                        .attr('transform', `translate(${width/2},0)`);
+
+// Scaling axis
+const x3 = d3.scaleLinear()
+            .domain([-20,20])
+            .range([0, width])
+            
+
+const y3 = d3.scaleBand()
+            .domain([1,2,3,4,5,6,7,8,9,10])
+            .rangeRound([0, height])
+            .padding(0.2)
+
+            
+// X axis
+const axeX3 = d3.axisBottom(x3);
+
+groupeX3.call(axeX3)
+        .style('font-size', '15px')
+        .style('font-weight','bold');
+
+
+// Y axis
+const axeY3 = d3.axisLeft(y3)
+                .tickSize(0);
+
+groupeY3.call(axeY3)
+        .style('font-size', '15px')
+        .style('font-weight','bold')
+        .attr('id','axisY');  
+
+
+// ----- Function to create & modify rects ----- //
+            
+function createRects(dataOnline){
+    let rects = graph3.selectAll("rect") // There's none but that's the way
+    .data(dataOnline)
+    
+    rects.enter() // Select data not used yet
+    .append('rect') // For each enter(), create a rect
+    .attr('fill', function(d){if(d[1]<0){return '#d65'}else{return 'teal'}})
+    .attr('width', function(d){return Math.abs(x3(d[1])-x3(0))}) // .bandwith() devides the space into the number of rects
+    .attr('height', y3.bandwidth())
+    .attr('y', function(d){return y3(d[0])})
+    .attr('x', function(d){return x3(Math.min(0, d[1]))});
+    
+    rects.transition()
+    .duration(400)
+    .ease(d3.easeLinear)
+    .attr('fill', function(d){if(d[1]<0){return '#d65'}else{return 'teal'}})
+    .attr('width', function(d){return Math.abs(x3(d[1])-x3(0))}) // .bandwith() devides the space into the number of rects
+    .attr('height', y3.bandwidth())
+    .attr('y', function(d){return y3(d[0])})
+    .attr('x', function(d){return x3(Math.min(0, d[1]))});
+}
+
+
+// ----- Async function to get data from API ----- // 
+
+async function getOnlineData(){
+    try{
+        let response = await fetch("https://inside.becode.org/api/v1/data/random.json"); // Get data from url
+        let data =  await response.json(); // Transform data into JSON 
+        createRects(data)
+    }catch(e){
+        console.error(e);
+    }
+}
+getOnlineData();
+setInterval(getOnlineData,1000);
