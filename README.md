@@ -1,6 +1,7 @@
 # Creating interactive graphs using the D3 library
 
 [What's d3 ?](https://d3js.org/)
+
 [See the project](http://terencehecq.github.io/js-datavisualisation-challenge/)
 
 
