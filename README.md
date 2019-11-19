@@ -1,11 +1,13 @@
 # Creating interactive graphs using the D3 library
 
-[What's d3 ?](https://d3js.org/)
+## The project 
 
-[See the project](http://terencehecq.github.io/js-datavisualisation-challenge/)
+The purpose of the project was to learn a new JavaScript library : [D3](https://d3js.org/). To go on with that, I had to create graphs to illustrate data which was given.
+
+You can see the project [here](http://terencehecq.github.io/js-datavisualisation-challenge/) ! 
 
 
-## What I learned : 
+## What I learned 
 
 - Create graphs with d3 (*Thank's Captain Obvious*)
 - Get data from HTML table
@@ -18,7 +20,7 @@
 
 ## Encountered challenges 
 
-#### Graphs 1 & 2 : 
+#### Graphs 1 & 2 :
 
 - **Formatting data** from HTML tables
 - Interactivity on **hover**
@@ -31,7 +33,7 @@
 - **Transitions** on rectangles
 
 
-## Personal debriefing : 
+## Personal debrief 
 
 D3 is quite simple **IF** the data is formatted in a right way. 
 
