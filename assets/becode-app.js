@@ -68,12 +68,12 @@ console.log(dataTwo);
 function createGraph(countryToShow){
 
     let margin = {top: 20, right: 20, bottom: 50, left: 50};
-    let width = 900 - margin.left - margin.right;
+    let width = 850 - margin.left - margin.right;
     let height = 600 - margin.top - margin.bottom;
 
     // Create SVG
     let svg1 = d3.select('#mw-content-text').insert('svg','#table1')
-                                            .attr('width', 900)
+                                            .attr('width', 850)
                                             .attr('height', 600)
                                             .style('background', '#eee')
                                             .attr('id','svg1')
@@ -225,7 +225,7 @@ d3.select('#mw-content-text').insert('label',"#selectCountry")
 function createGraph2(dateToShow){
 
     let margin = {top: 20, right: 20, bottom: 160, left: 50};
-    let width = 900 - margin.left - margin.right;
+    let width = 850 - margin.left - margin.right;
     let height = 650 - margin.top - margin.bottom;
     let countries = [];
     dataTwo.forEach(data => countries.push(data.country));
@@ -233,7 +233,7 @@ function createGraph2(dateToShow){
 
     // Create SVG
     let svg2 = d3.select('#mw-content-text').insert('svg','#table2')
-                                            .attr('width', 900)
+                                            .attr('width', 850)
                                             .attr('height', 600)
                                             .style('background', '#eee')
                                             .attr('id','svg2');
@@ -384,12 +384,12 @@ d3.select('#mw-content-text').insert('label',"#selectYear")
 // ----- Graph 3 ----- //
 
 let margin3 = {top: 20, right: 20, bottom: 90, left: 50};
-let width = 900 - margin3.left - margin3.right;
-let height = 650 - margin3.top - margin3.bottom;
+let width = 800 - margin3.left - margin3.right;
+let height = 600 - margin3.top - margin3.bottom;
 
 // Create SVG
 let svg3 = d3.select('#content').insert('svg','#bodyContent')
-                                        .attr('width', 900)
+                                        .attr('width', 800)
                                         .attr('height', 600)
                                         .style('background', '#eee')
                                         .attr('id','svg3');
@@ -453,7 +453,7 @@ function createRects(dataOnline){
     .attr('x', function(d){return x3(Math.min(0, d[1]))});
     
     rects.transition()
-    .duration(400)
+    .duration(200)
     .ease(d3.easeLinear)
     .attr('fill', function(d){if(d[1]<0){return '#d65'}else{return 'teal'}})
     .attr('width', function(d){return Math.abs(x3(d[1])-x3(0))}) // .bandwith() devides the space into the number of rects
