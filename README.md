@@ -1,6 +1,19 @@
 # Creating interactive graphs using the D3 library
 
-(Link to d3)[https://d3js.org/]
+[What's d3 ?](https://d3js.org/)
+[See the project](http://terencehecq.github.io/js-datavisualisation-challenge/)
+
+
+## What I learned : 
+
+- Create graphs with d3 (*Thank's Captain Obvious*)
+- Get data from HTML table
+- Properties of SVG and specific SVG elements
+- Get the right data on hover (a bit tricky)
+- Generate complete DOM elements from d3 and data (Dropdowns)
+
+- Understand someone else's code to help with (Not specific to d3)
+
 
 ## Encountered challenges 
 
@@ -17,4 +30,11 @@
 - **Transitions** on rectangles
 
 
-*Exercice realised on 2019/11/18*
+## Personal debriefing : 
+
+D3 is quite simple **IF** the data is formatted in a right way. 
+
+There are several tuto's on the web but I had to pay attention to the vesion of d3. I was working with *d3.v5* while a lot of tuto's are still in v3 or v4 where syntax was different. 
+
+## Date :
+Exercice realised between 2019/11/12 & 2019/11/18
